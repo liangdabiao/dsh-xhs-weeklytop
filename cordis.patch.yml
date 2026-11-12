@@ -1,0 +1,5 @@
+# 小红书七日爆款雷达：xhs_weekly 工具（榜单查询/HTML 报告/历史）+ xiaohongshu-weeklytop 技能 + 侧栏看板。
+# 浏览器半边由 dsh.client 声明加载。
+- insert:
+    - id: xhs-weeklytop
+      name: 'dsh-xhs-weeklytop'
