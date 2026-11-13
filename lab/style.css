@@ -316,3 +316,40 @@ svg.ic { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none
 
 /* 日期说明条 */
 .date-note { display: flex; align-items: center; gap: var(--sp-3); padding: var(--sp-3) var(--sp-4); background: var(--accent-soft); border: 1px solid var(--accent); color: var(--accent); font-size: 12px; margin-bottom: var(--sp-5); }
+
+/* ---------- 报告查看器（面板内覆盖层，不依赖 window.open） ---------- */
+.report-view { position: fixed; inset: 0; z-index: 80; display: flex; align-items: center; justify-content: center; padding: var(--sp-5); background: rgba(10, 10, 10, .55); backdrop-filter: blur(2px); }
+.rv-panel { display: flex; flex-direction: column; width: 100%; height: 100%; max-width: 1180px; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0, 0, 0, .28); }
+.rv-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); padding: var(--sp-3) var(--sp-4); border-bottom: 1px solid var(--line-subtle); flex: 0 0 auto; }
+.rv-title { display: inline-flex; align-items: center; gap: var(--sp-2); font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+.rv-title .ic { width: 15px; height: 15px; }
+.rv-actions { display: inline-flex; gap: var(--sp-2); }
+.rv-body { flex: 1 1 auto; min-height: 0; overflow: hidden; display: flex; }
+.rv-body > .loading, .rv-body > .empty { margin: auto; }
+.rv-frame { width: 100%; height: 100%; border: 0; display: block; background: #f5f5f5; }
+
+/* 报告入口（卡片/榜单页共用） */
+.chip.act { cursor: pointer; background: var(--paper); font-size: 10px; }
+.chip.act:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+.chip.act.gen { color: var(--text-helper); }
+.slot { display: inline-flex; }
+.card[data-board-card] { cursor: pointer; }
+.card[data-board-card]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (max-width: 860px) {
+  .report-view { padding: 0; }
+  .rv-panel { max-width: none; border: 0; }
+}
+
+/* 笔记卡片：封面 / 头像 / 正文摘要 / 可点区域（点开走系统浏览器） */
+.note-card { align-items: flex-start; }
+.note-card .n-thumb { flex: none; width: 58px; height: 76px; padding: 0; border: 1px solid var(--line-subtle); background: var(--grey-1); overflow: hidden; cursor: pointer; display: block; }
+.note-card .n-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.note-card .n-thumb.broken { display: none; }
+.note-card .n-title { cursor: pointer; }
+.note-card .n-title span:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.note-card .n-author { display: flex; align-items: center; gap: 6px; }
+.note-card .n-avatar { width: 16px; height: 16px; border-radius: 50%; object-fit: cover; flex: none; }
+.note-card .n-desc { margin-top: 4px; font-size: 12px; line-height: 1.55; color: var(--text-secondary); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; cursor: pointer; }
+.note-card .n-desc:hover { color: var(--ink); }
+.note-card .n-go { padding: 0; border: 0; background: transparent; cursor: pointer; }

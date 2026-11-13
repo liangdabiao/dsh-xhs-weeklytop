@@ -222,16 +222,19 @@ export const xhsWeeklyTool = {
       const html = generateWeeklyHtml(notes, { category: meta.category, fetchTime: meta.fetch_time, topN: top, rankDate: meta.rank_date })
       const file = saveReportHtml(meta.board_id, html)
       return result(true,
-        `HTML 报告已生成（TOP${top}，与表格同数据同排序）：${file}。面板可直接查看；向用户输出文件路径并说明支持导出 PDF/图片。`,
-        `报告文件: ${file}`)
+        `HTML 报告已生成（TOP${top}，与表格同数据同排序）：${file}。` +
+        '桌面端 WebContentsView 会 deny window.open/target=_blank，报告只能在面板内查看——' +
+        '告诉用户点侧栏「小红书七日爆款雷达」→「报告」页（或该榜单页）的「打开 HTML 报告」，' +
+        '不要把磁盘路径当成可点开的入口。',
+        `报告文件: ${file}\n面板入口: 侧栏「小红书七日爆款雷达」→「报告」→「打开报告」`)
     }
 
     // ── history ──────────────────────────────────────────────────────────
     if (args.action === 'history') {
       const list = listBoards({ limit: 20 })
       if (!list.length) return result(false, '还没有榜单。先 fetch。')
-      const lines = list.map((r) => `${r.board_id}｜${r.category}｜${r.rank_date}｜${r.total} 条`)
-      return result(true, `共 ${list.length} 份榜单（新→旧）。对旧榜单补 HTML/读条目传 boardId。`, lines.join('\n'))
+      const lines = list.map((r) => `${r.board_id}｜${r.category}｜${r.rank_date}｜${r.total} 条${r.has_report ? '｜有报告' : ''}`)
+      return result(true, `共 ${list.length} 份榜单（新→旧，标「有报告」的可在面板「报告」页直接打开）。对旧榜单补 HTML/读条目传 boardId。`, lines.join('\n'))
     }
 
     throw new Error(`未知 action：${args.action}`)
