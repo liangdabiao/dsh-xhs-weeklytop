@@ -3,6 +3,8 @@
 DeepSeek Harness（dsh）插件：**近 7 天小红书热门笔记 TOP50**。24 个垂直分类关键词匹配、19:00 日期规则、互动数/新增双行榜单、小红书风 HTML 报告（导出 PDF/图片）、爆款共性分析，侧栏看板。
 
 移植自 [redfox-data/redfox-community](https://github.com/redfox-data/redfox-community) 的 `skills/xiaohongshu-weeklytop`（Python 全量重写为 Node 原生，**零 Python 依赖**；core_workflow 输出规范完整保留）。
+<img width="2481" height="1128" alt="image" src="https://github.com/user-attachments/assets/389fcbc6-817f-4bf7-8887-bbfe6e2aa783" />
+
 
 ## 解决什么问题
 
