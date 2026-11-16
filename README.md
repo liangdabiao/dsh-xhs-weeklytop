@@ -6,6 +6,12 @@ DeepSeek Harness（dsh）插件：**近 7 天小红书热门笔记 TOP50**。24 
  <img width="2430" height="1194" alt="image" src="https://github.com/user-attachments/assets/875254de-c326-49f0-9ebc-8000ab02ef5d" />
 
 
+## 安装
+
+```bash
+dsh plugin --profile web add https://github.com/liangdabiao/dsh-xhs-weeklytop
+```
+
 ## 解决什么问题
 
 「不知道当下什么内容火、为什么火」的选题难题——按赛道查七日爆款，拆解共性，支撑复盘与创作决策。适用：小红书博主、品牌方、MCN、增长团队。
